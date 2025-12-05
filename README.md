@@ -12,6 +12,10 @@ Hi, I'm a full‑stack developer specializing in:
 
 I enjoy building useful tools, improving UX, and collaborating with communities around the world.
 
+| Portfolio
+|:-:|
+| ![First](https://) |
+
 ## Tech Stack
 
 - Frontend: React, Next.js, TypeScript, Tailwind CSS
