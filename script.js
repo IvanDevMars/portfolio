@@ -197,6 +197,184 @@ document.querySelectorAll('.social-link').forEach(link => {
   });
 });
 
+// Project modal behavior
+const projectModal = document.getElementById('projectModal');
+const modalClose = projectModal && projectModal.querySelector('.modal-close');
+const modalTitle = document.getElementById('projectModalTitle');
+const modalDesc = document.getElementById('projectModalDesc');
+const modalStack = document.getElementById('projectModalStack');
+const modalImage = document.getElementById('modalImage');
+const projectLiveLink = document.getElementById('projectLiveLink');
+const projectSourceLink = document.getElementById('projectSourceLink');
+
+let lastFocusedElement = null;
+function trapFocus(element) {
+  const focusableSelectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const focusableEls = element.querySelectorAll(focusableSelectors);
+  if (!focusableEls.length) return;
+  const firstEl = focusableEls[0];
+  const lastEl = focusableEls[focusableEls.length - 1];
+  function handleTrap(e) {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
+    }
+  }
+  element.addEventListener('keydown', handleTrap);
+  element._trapHandler = handleTrap;
+}
+function releaseTrap(element) {
+  if (element._trapHandler) {
+    element.removeEventListener('keydown', element._trapHandler);
+    delete element._trapHandler;
+  }
+}
+function openProjectModal(data) {
+  if (!projectModal) return;
+  modalTitle.textContent = data.title || 'Project';
+  modalDesc.textContent = data.desc || '';
+  modalStack.textContent = data.stack || '';
+  // Roles
+  const rolesList = document.getElementById('projectModalRoles');
+  rolesList.innerHTML = '';
+  if (Array.isArray(data.roles) && data.roles.length) {
+    data.roles.forEach(role => {
+      const li = document.createElement('li');
+      li.textContent = role;
+      rolesList.appendChild(li);
+    });
+    rolesList.style.display = '';
+  } else {
+    rolesList.style.display = 'none';
+  }
+  // Screenshots
+  const screensDiv = document.getElementById('projectModalScreens');
+  screensDiv.innerHTML = '';
+  if (Array.isArray(data.screens) && data.screens.length) {
+    data.screens.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = data.title + ' screenshot';
+      screensDiv.appendChild(img);
+    });
+    screensDiv.style.display = 'flex';
+  } else {
+    screensDiv.style.display = 'none';
+  }
+  // Case study
+  const caseDiv = document.getElementById('projectModalCase');
+  if (data.caseStudy) {
+    caseDiv.innerHTML = data.caseStudy;
+    caseDiv.style.display = '';
+  } else {
+    caseDiv.innerHTML = '';
+    caseDiv.style.display = 'none';
+  }
+  if (data.image) {
+    modalImage.style.backgroundImage = `url('${data.image}')`;
+  } else {
+    modalImage.style.backgroundImage = '';
+  }
+  if (data.live) {
+    projectLiveLink.href = data.live;
+    projectLiveLink.style.display = 'inline-block';
+  } else {
+    projectLiveLink.style.display = 'none';
+  }
+  if (data.source) {
+    projectSourceLink.href = data.source;
+    projectSourceLink.style.display = 'inline-block';
+  } else {
+    projectSourceLink.style.display = 'none';
+  }
+  lastFocusedElement = document.activeElement;
+  projectModal.setAttribute('aria-hidden', 'false');
+  const dialog = projectModal.querySelector('.modal-dialog');
+  dialog && dialog.focus();
+  trapFocus(dialog);
+  document.body.style.overflow = 'hidden';
+  modalClose && modalClose.focus();
+}
+
+function closeProjectModal() {
+  if (!projectModal) return;
+  projectModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  const dialog = projectModal.querySelector('.modal-dialog');
+  releaseTrap(dialog);
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
+}
+
+if (modalClose) {
+  modalClose.addEventListener('click', closeProjectModal);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeProjectModal();
+});
+
+// Attach to project links (progressive enhancement)
+document.querySelectorAll('.project-card').forEach((card, idx) => {
+  const link = card.querySelector('.project-link');
+  if (!link) return;
+  // gather data from card
+  const title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+  const desc = card.querySelector('p') ? card.querySelector('p').textContent : '';
+  const imageStyle = card.querySelector('.project-image')?.getAttribute('style') || '';
+  const imageMatch = imageStyle.match(/url\(['"]?(.*?)['"]?\)/);
+  const image = imageMatch ? imageMatch[1] : '';
+  const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent).join(', ');
+  // Demo: add richer modal content for first project, fallback for others
+  let data = { title, desc, stack: tags, image };
+  if (idx === 0) {
+    data.roles = [
+      'Led frontend architecture and component library',
+      'Mentored 3+ engineers and code reviewed PRs',
+      'Collaborated with backend and design teams',
+      'Implemented accessibility and performance best practices'
+    ];
+    data.screens = [
+      'images/faireSite.png',
+      'images/faireSite-detail.png'
+    ];
+    data.caseStudy = `<strong>Case Study:</strong> <br>Redesigned the e-commerce platform for scale, resulting in a 30% faster load time and 20% increase in conversion. Introduced automated testing and CI/CD, reducing bugs by 40%.`;
+    data.live = 'https://www.faire.com';
+    data.source = '';
+  }
+  // intercept click
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    openProjectModal(data);
+  });
+});
+
+// Resume download
+const resumeLink = document.getElementById('resumeLink');
+if (resumeLink) {
+  resumeLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    // trigger download of a local resume file (resume.txt)
+    const a = document.createElement('a');
+    a.href = 'resume.txt';
+    a.download = 'Denis_Novak_Resume.txt';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
+}
+
 // Initialize typed text effect (optional enhancement)
 function typeText(element, text, speed = 50) {
   let index = 0;

@@ -1,0 +1,16 @@
+Denis Novak
+Senior Full Stack Developer
+
+Summary:
+Experienced developer specializing in scalable web applications, frontend architecture, and mentoring.
+
+Experience:
+- Senior Frontend Engineer, Acme Co. (2022 - Present)
+- Full Stack Developer, Beta Apps (2019 - 2022)
+- Software Engineer, Startup X (2016 - 2019)
+
+Skills:
+HTML, CSS, JavaScript, React, Vue, Node.js, Express, PostgreSQL, MongoDB, Docker, AWS
+
+Contact:
+hot2mars@gmail.com

@@ -1,3 +1,40 @@
+.modal-roles {
+  margin: 1.2rem 0 1.2rem 0;
+  padding-left: 1.2rem;
+  color: #444;
+  font-size: 1rem;
+}
+.modal-roles li {
+  margin-bottom: 0.5rem;
+  list-style: disc inside;
+}
+
+.modal-screens {
+  display: flex;
+  gap: 1rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+.modal-screens img {
+  max-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.modal-screens img:hover {
+  transform: scale(1.04) translateY(-2px);
+}
+
+.modal-case {
+  margin: 1.2rem 0;
+  color: #333;
+  font-size: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
 * {
   margin: 0;
   padding: 0;
@@ -51,7 +88,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
   transition: none;
   cursor: default;
 }
@@ -133,7 +170,7 @@ body {
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   background-clip: unset;
-  text-fill-color: unset;
+  /* text-fill-color: unset; */
   animation: none;
 }
 
@@ -148,7 +185,7 @@ body {
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   background-clip: unset;
-  text-fill-color: unset;
+  /* text-fill-color: unset; */
   font-weight: 600;
 }
 
@@ -237,6 +274,61 @@ body {
   padding: 80px 2rem;
 }
 
+/* Experience timeline */
+.experience {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+}
+
+.experience h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid rgba(0,0,0,0.06);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 4px 14px rgba(102,126,234,0.25);
+  margin-top: 6px;
+}
+
+.timeline-content h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+}
+
+.timeline-date {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  margin: 0;
+  color: #555;
+}
+
 .projects h2 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
@@ -320,6 +412,88 @@ body {
 
 .project-link:hover {
   color: var(--secondary-color);
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 3000;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-dialog {
+  width: min(900px, 94%);
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+}
+
+.modal-media {
+  background-size: cover;
+  background-position: center;
+  min-height: 260px;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-close {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: #222;
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+.modal-close:focus, .modal-close:focus-visible {
+  outline: 2px solid var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(245,87,108,0.25);
+}
+
+.modal h3 { margin-top: 0; }
+
+.btn { 
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--primary-color);
+  color: var(--white);
+  border-radius: 8px;
+  text-decoration: none;
+  margin-right: .5rem;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+.btn:focus, .btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(245,87,108,0.18);
+}
+
+.btn-outline { 
+  background: transparent;
+  color: var(--primary-color);
+  border: 1.5px solid var(--primary-color);
+}
+.modal-dialog:focus {
+  outline: 2px solid var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(245,87,108,0.12);
 }
 
 /* Skills Section */
@@ -490,18 +664,26 @@ body {
   right: 0;
   bottom: 0;
   z-index: 0;
-  background: repeating-radial-gradient(circle at 20% 30%, #f5576c33 0, #f5576c00 40px),
-              repeating-radial-gradient(circle at 80% 70%, #fee14044 0, #fee14000 60px),
-              repeating-radial-gradient(circle at 60% 20%, #667eea33 0, #667eea00 50px);
-  animation: move-bg 12s linear infinite alternate;
+  /* external image layer with a subtle dark overlay for contrast (Unsplash) */
+  background-image: linear-gradient(rgba(10, 10, 20, 0.36), rgba(10, 10, 20, 0.36)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover, cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: brightness(0.72) contrast(1.03) saturate(1.05);
+  transform: scale(1.02);
+  will-change: background-position, transform;
+  animation: bg-pan 20s linear infinite;
 }
 
-@keyframes move-bg {
+@keyframes bg-pan {
   0% {
-    background-position: 20% 30%, 80% 70%, 60% 20%;
+    background-position: 30% 50%;
+  }
+  50% {
+    background-position: 70% 50%;
   }
   100% {
-    background-position: 40% 60%, 60% 40%, 80% 80%;
+    background-position: 30% 50%;
   }
 }
 
@@ -521,7 +703,7 @@ body {
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   background-clip: unset;
-  text-fill-color: unset;
+  /* text-fill-color: unset; */
   animation: none;
 }
 
@@ -536,7 +718,7 @@ body {
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   background-clip: unset;
-  text-fill-color: unset;
+  /* text-fill-color: unset; */
   font-weight: 600;
 }
 
