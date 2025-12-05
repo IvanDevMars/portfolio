@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Portfolio</div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="profile-container">
+        </div>
+        <h1>I 'm Denis Costa</h1>
+        <p>Full Stack Developer | Web Designer | Problem Solver</p>
+        <a href="#projects" class="cta-button">View My Work</a>
+      </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          I'm a passionate developer with expertise in creating beautiful and functional web applications.
+          With a strong foundation in HTML, CSS, and JavaScript, I build responsive websites that provide
+          excellent user experiences.
+        </p>
+        <p>
+          When I'm not coding, you can find me exploring new technologies, contributing to open-source
+          projects,
+          or enjoying the great outdoors.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <h3>50+</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat">
+          <h3>5+</h3>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat">
+          <h3>99.8%</h3>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('images/faireSite.png'); background-size: cover; background-position: center;">
+        </div>
+        <h3>E-Commerce Platform</h3>
+        <p>A full-featured e-commerce platform with shopping cart, payment integration, and admin dashboard.</p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+        </div>
+        <a href="https://www.faire.com" target="_blank" class="project-link">View Project →</a>
+      </div>
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('images/linear.app.png'); background-size: cover; background-position: center;">
+        </div>
+        <h3>Task Management App</h3>
+        <p>A productivity app for organizing tasks with drag-and-drop functionality and real-time updates.</p>
+        <div class="project-tags">
+          <span class="tag">Vue.js</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">CSS Grid</span>
+        </div>
+        <a href="https://linear.app" target="_blank" class="project-link">View Project →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('images/weather.png'); background-size: cover; background-position: center;">
+        </div>
+        <h3>Weather Dashboard</h3>
+        <p>Real-time weather application with location search and detailed forecasts using public APIs.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">API Integration</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+        <a href="https://aviationweather.gov" target="_blank" class="project-link">View Project →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('images/socialMedia.png'); background-size: cover; background-position: center;">
+        </div>
+        <h3>Social Media Analytics</h3>
+        <p>Dashboard for tracking social media metrics with interactive charts and data visualization.</p>
+        <div class="project-tags">
+          <span class="tag">Chart.js</span>
+          <span class="tag">API</span>
+          <span class="tag">Responsive</span>
+        </div>
+        <a href="https://www.sendible.com" target="_blank" class="project-link">View Project →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('images/blog.png'); background-size: cover; background-position: center;">
+        </div>
+        <h3>Blog Platform</h3>
+        <p>Content management system with markdown support, comments, and SEO optimization features.</p>
+        <div class="project-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Express</span>
+        </div>
+        <a href="https://jekyllrb.com" target="_blank" class="project-link">View Project →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('images/mobile.png'); background-size: cover; background-position: center;">
+        </div>
+        <h3>Fitness Tracker</h3>
+        <p>Mobile-responsive fitness application for tracking workouts and monitoring health metrics.</p>
+        <div class="project-tags">
+          <span class="tag">PWA</span>
+          <span class="tag">Local Storage</span>
+          <span class="tag">Charts</span>
+        </div>
+        <a href="https://obefitness.com" target="_blank" class="project-link">View Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3 / SCSS</li>
+          <li>JavaScript (ES6+)</li>
+          <li>React / Vue.js</li>
+          <li>Responsive Design</li>
+          <li>Web Animation</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Backend</h3>
+        <ul>
+          <li>Node.js</li>
+          <li>Express.js</li>
+          <li>Python</li>
+          <li>RESTful APIs</li>
+          <li>Database Design</li>
+          <li>Authentication</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Tools & Technologies</h3>
+        <ul>
+          <li>Git / GitHub</li>
+          <li>Webpack</li>
+          <li>Docker</li>
+          <li>AWS</li>
+          <li>Firebase</li>
+          <li>MongoDB / PostgreSQL</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Project Management</li>
+          <li>Team Collaboration</li>
+          <li>Problem Solving</li>
+          <li>Communication</li>
+          <li>Mentoring</li>
+          <li>Agile Methodology</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Get In Touch</h2>
+    <p class="contact-intro">I'm always open to new opportunities and interesting projects. Feel free to reach out!
+    </p>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" id="subject" placeholder="Subject" required>
+      </div>
+      <div class="form-group">
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+    <div class="social-links">
+      <a href="#" class="social-link" title="GitHub">GitHub</a>
+      <a href="#" class="social-link" title="LinkedIn">LinkedIn</a>
+      <a href="#" class="social-link" title="Email">Email</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2022 Denis Costa. All rights reserved.</p>
+    <p>Designed and built by me with ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
